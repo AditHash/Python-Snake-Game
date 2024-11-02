@@ -7,7 +7,7 @@ import os
 pygame.init()
 
 # Screen settings
-WIDTH, HEIGHT = 640, 320
+WIDTH, HEIGHT = 640, 640
 MARGIN = 0  # Visible boundary margin size
 FPS = 60
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -21,7 +21,7 @@ GREEN = (0, 255, 0)  # Bonus food color
 font = pygame.font.SysFont(None, 35)
 
 # Block size and speed
-BLOCK_SIZE = 20
+BLOCK_SIZE = 40
 SNAKE_SPEED = 8
 
 # Define the graphics path
@@ -29,30 +29,30 @@ GRAPHICS_PATH = os.path.join(os.getcwd(), "assets")
 
 # Load images for snake parts
 head_imgs = {
-    "left": pygame.image.load(os.path.join(GRAPHICS_PATH, "head_left.png")).convert_alpha(),
-    "right": pygame.image.load(os.path.join(GRAPHICS_PATH, "head_right.png")).convert_alpha(),
-    "up": pygame.image.load(os.path.join(GRAPHICS_PATH, "head_up.png")).convert_alpha(),
-    "down": pygame.image.load(os.path.join(GRAPHICS_PATH, "head_down.png")).convert_alpha()
+    "left": pygame.image.load(os.path.join(GRAPHICS_PATH, "body/head_left.png")).convert_alpha(),
+    "right": pygame.image.load(os.path.join(GRAPHICS_PATH, "body/head_right.png")).convert_alpha(),
+    "up": pygame.image.load(os.path.join(GRAPHICS_PATH, "body/head_up.png")).convert_alpha(),
+    "down": pygame.image.load(os.path.join(GRAPHICS_PATH, "body/head_down.png")).convert_alpha()
 }
 
 body_imgs = {
-    "horizontal": pygame.image.load(os.path.join(GRAPHICS_PATH, "body_horizontal.png")).convert_alpha(),
-    "vertical": pygame.image.load(os.path.join(GRAPHICS_PATH, "body_vertical.png")).convert_alpha(),
-    "top_left": pygame.image.load(os.path.join(GRAPHICS_PATH, "body_topleft.png")).convert_alpha(),
-    "top_right": pygame.image.load(os.path.join(GRAPHICS_PATH, "body_topright.png")).convert_alpha(),
-    "bottom_left": pygame.image.load(os.path.join(GRAPHICS_PATH, "body_bottomleft.png")).convert_alpha(),
-    "bottom_right": pygame.image.load(os.path.join(GRAPHICS_PATH, "body_bottomright.png")).convert_alpha()
+    "horizontal": pygame.image.load(os.path.join(GRAPHICS_PATH, "body/body_horizontal.png")).convert_alpha(),
+    "vertical": pygame.image.load(os.path.join(GRAPHICS_PATH, "body/body_vertical.png")).convert_alpha(),
+    "top_left": pygame.image.load(os.path.join(GRAPHICS_PATH, "body/body_topleft.png")).convert_alpha(),
+    "top_right": pygame.image.load(os.path.join(GRAPHICS_PATH, "body/body_topright.png")).convert_alpha(),
+    "bottom_left": pygame.image.load(os.path.join(GRAPHICS_PATH, "body/body_bottomleft.png")).convert_alpha(),
+    "bottom_right": pygame.image.load(os.path.join(GRAPHICS_PATH, "body/body_bottomright.png")).convert_alpha()
 }
 
 tail_imgs = {
-    "left": pygame.image.load(os.path.join(GRAPHICS_PATH, "tail_left.png")).convert_alpha(),
-    "right": pygame.image.load(os.path.join(GRAPHICS_PATH, "tail_right.png")).convert_alpha(),
-    "up": pygame.image.load(os.path.join(GRAPHICS_PATH, "tail_up.png")).convert_alpha(),
-    "down": pygame.image.load(os.path.join(GRAPHICS_PATH, "tail_down.png")).convert_alpha()
+    "left": pygame.image.load(os.path.join(GRAPHICS_PATH, "body/tail_left.png")).convert_alpha(),
+    "right": pygame.image.load(os.path.join(GRAPHICS_PATH, "body/tail_right.png")).convert_alpha(),
+    "up": pygame.image.load(os.path.join(GRAPHICS_PATH, "body/tail_up.png")).convert_alpha(),
+    "down": pygame.image.load(os.path.join(GRAPHICS_PATH, "body/tail_down.png")).convert_alpha()
 }
 
-food_img = pygame.image.load(os.path.join(GRAPHICS_PATH, "apple.png")).convert_alpha()
-bonus_food_img = pygame.image.load(os.path.join(GRAPHICS_PATH, "cookies.png")).convert_alpha()  # Load bonus food
+food_img = pygame.image.load(os.path.join(GRAPHICS_PATH, "food/apple.png")).convert_alpha()
+bonus_food_img = pygame.image.load(os.path.join(GRAPHICS_PATH, "food/cookies.png")).convert_alpha()  # Load bonus food
 
 # Scale images to fit the block size
 for key in head_imgs:
@@ -65,11 +65,11 @@ food_img = pygame.transform.scale(food_img, (BLOCK_SIZE, BLOCK_SIZE))
 bonus_food_img = pygame.transform.scale(bonus_food_img, (BLOCK_SIZE, BLOCK_SIZE))  # Scale bonus food
 
 # Load and scale the background image
-background_img = pygame.image.load(os.path.join(GRAPHICS_PATH, "background.png")).convert()
+background_img = pygame.image.load(os.path.join(GRAPHICS_PATH, "background/background.png")).convert()
 background_img = pygame.transform.scale(background_img, (WIDTH, HEIGHT))
 
 # Load eating sound
-eating_sound = pygame.mixer.Sound(os.path.join(GRAPHICS_PATH, "EatSound.ogg"))
+eating_sound = pygame.mixer.Sound(os.path.join(GRAPHICS_PATH, "sounds/EatSound.ogg"))
 
 # Display score
 def display_score(score):
