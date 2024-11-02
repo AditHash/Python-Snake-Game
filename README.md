@@ -1,4 +1,4 @@
-# Advanced Snake Game
+# Advanced Snake Game using Python
 
 ## Overview
 The Advanced Snake Game is a modern twist on the classic snake game, featuring enhanced graphics, bonus food, and improved gameplay mechanics. The player controls a snake that grows in length as it eats food while avoiding collisions with the walls and itself.
